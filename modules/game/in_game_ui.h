@@ -41,8 +41,8 @@ class HBInGameUI : public Control {
 
 	HBPlayerAgent *player_agent = nullptr;
 	GDVIRTUAL3(_player_health_changed, int, int, int)
-	GDVIRTUAL1(_agent_entered_combat, HBAgent*)
-	GDVIRTUAL1(_agent_exited_combat, HBAgent*)
+	GDVIRTUAL1(_agent_entered_combat, HBAgent *)
+	GDVIRTUAL1(_agent_exited_combat, HBAgent *)
 protected:
 	static void _bind_methods();
 	void _on_player_damage_received(int p_old_health, int p_new_health);

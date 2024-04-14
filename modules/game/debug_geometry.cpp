@@ -98,35 +98,34 @@ Ref<Mesh> HBDebugGeometry::generate_arrow_mesh(float p_length, const Color &p_co
 
 	float head_height = MIN(p_length, ARROW_HEAD_HEIGHT);
 	float body_length = MAX(p_length - head_height, 0.0);
-	
+
 	PackedVector3Array vertex_array;
 	PackedInt32Array index_array;
 
-	const int head_vertex_count = ARROW_RESOLUTION+1; // +1 for the peak of the arrow head
-	const int head_index_count = ARROW_RESOLUTION*3;
+	const int head_vertex_count = ARROW_RESOLUTION + 1; // +1 for the peak of the arrow head
+	const int head_index_count = ARROW_RESOLUTION * 3;
 
-	const int body_vertex_count = body_length > 0 ? ARROW_RESOLUTION*2 : 0;
-	const int body_index_count = body_length > 0 ? ARROW_RESOLUTION*6 : 0;
+	const int body_vertex_count = body_length > 0 ? ARROW_RESOLUTION * 2 : 0;
+	const int body_index_count = body_length > 0 ? ARROW_RESOLUTION * 6 : 0;
 
 	// Head
-	vertex_array.resize(head_vertex_count+body_vertex_count);
-	index_array.resize(head_index_count+body_index_count);
+	vertex_array.resize(head_vertex_count + body_vertex_count);
+	index_array.resize(head_index_count + body_index_count);
 
 	Vector3 *vertex_ptrw = vertex_array.ptrw();
 	int *index_ptrw = index_array.ptrw();
 
 	const int ARROW_PEAK_VERTEX_IDX = ARROW_RESOLUTION;
 
-	vertex_ptrw[ARROW_PEAK_VERTEX_IDX] = Vector3(0.0f, body_length+head_height, 0.0f);
+	vertex_ptrw[ARROW_PEAK_VERTEX_IDX] = Vector3(0.0f, body_length + head_height, 0.0f);
 	const Vector3 UP = Vector3(0.0f, 1.0f, 0.0f);
 
-
 	for (int i = 0; i < ARROW_RESOLUTION; i++) {
-		vertex_ptrw[i] = Vector3(ARROW_HEAD_RADIUS, body_length, 0.0).rotated(UP, Math_TAU * (i/(float)ARROW_RESOLUTION));
-		int next_point_idx = (i+1) % ARROW_RESOLUTION;
-		index_ptrw[(i*3)+0] = i;
-		index_ptrw[(i*3)+1] = ARROW_PEAK_VERTEX_IDX;
-		index_ptrw[(i*3)+2] = next_point_idx;
+		vertex_ptrw[i] = Vector3(ARROW_HEAD_RADIUS, body_length, 0.0).rotated(UP, Math_TAU * (i / (float)ARROW_RESOLUTION));
+		int next_point_idx = (i + 1) % ARROW_RESOLUTION;
+		index_ptrw[(i * 3) + 0] = i;
+		index_ptrw[(i * 3) + 1] = ARROW_PEAK_VERTEX_IDX;
+		index_ptrw[(i * 3) + 2] = next_point_idx;
 	}
 
 	// Body
@@ -135,22 +134,22 @@ Ref<Mesh> HBDebugGeometry::generate_arrow_mesh(float p_length, const Color &p_co
 		const int body_vtx_offset = head_vertex_count;
 		const int body_idx_offset = head_index_count;
 		for (int i = 0; i < ARROW_RESOLUTION; i++) {
-			const int point_down_idx = body_vtx_offset + (i*2);
-			const int point_up_idx = point_down_idx+1;
-			vertex_ptrw[point_down_idx] = Vector3(BODY_RADIUS, 0.0, 0.0).rotated(UP, Math_TAU * (i/(float)ARROW_RESOLUTION));
-			vertex_ptrw[point_up_idx] = Vector3(BODY_RADIUS, body_length, 0.0).rotated(UP, Math_TAU * (i/(float)ARROW_RESOLUTION));
+			const int point_down_idx = body_vtx_offset + (i * 2);
+			const int point_up_idx = point_down_idx + 1;
+			vertex_ptrw[point_down_idx] = Vector3(BODY_RADIUS, 0.0, 0.0).rotated(UP, Math_TAU * (i / (float)ARROW_RESOLUTION));
+			vertex_ptrw[point_up_idx] = Vector3(BODY_RADIUS, body_length, 0.0).rotated(UP, Math_TAU * (i / (float)ARROW_RESOLUTION));
 
-			const int next_point_down_idx = body_vtx_offset + (((i+1)*2) % (ARROW_RESOLUTION*2));
-			const int next_point_up_idx = next_point_down_idx+1;
-			
-			const int idx_start = body_idx_offset + (i*6);
+			const int next_point_down_idx = body_vtx_offset + (((i + 1) * 2) % (ARROW_RESOLUTION * 2));
+			const int next_point_up_idx = next_point_down_idx + 1;
+
+			const int idx_start = body_idx_offset + (i * 6);
 			index_ptrw[idx_start] = point_down_idx;
-			index_ptrw[idx_start+1] = point_up_idx;
-			index_ptrw[idx_start+2] = next_point_up_idx;
+			index_ptrw[idx_start + 1] = point_up_idx;
+			index_ptrw[idx_start + 2] = next_point_up_idx;
 
-			index_ptrw[idx_start+3] = point_down_idx;
-			index_ptrw[idx_start+4] = next_point_up_idx;
-			index_ptrw[idx_start+5] = next_point_down_idx;
+			index_ptrw[idx_start + 3] = point_down_idx;
+			index_ptrw[idx_start + 4] = next_point_up_idx;
+			index_ptrw[idx_start + 5] = next_point_down_idx;
 		}
 	}
 
@@ -169,7 +168,7 @@ Ref<Mesh> HBDebugGeometry::generate_arrow_mesh(float p_length, const Color &p_co
 	array_fmt.set_flag(Mesh::ArrayFormat::ARRAY_FORMAT_VERTEX);
 	array_fmt.set_flag(Mesh::ArrayFormat::ARRAY_FORMAT_COLOR);
 	mesh->add_surface_from_arrays(Mesh::PRIMITIVE_TRIANGLES, arr, TypedArray<Array>(), Dictionary(), array_fmt);
-	mesh->surface_set_material(0, const_cast<HBDebugGeometry*>(this)->get_arrow_material());
+	mesh->surface_set_material(0, const_cast<HBDebugGeometry *>(this)->get_arrow_material());
 	return mesh;
 }
 
@@ -226,7 +225,7 @@ void HBDebugGeometry::clear() {
 	}
 	current_group->shape_map.clear();
 
-	for (MeshInstance3D* mi : current_group->arrow_meshes) {
+	for (MeshInstance3D *mi : current_group->arrow_meshes) {
 		mi->queue_free();
 	}
 	current_group->arrow_meshes.clear();

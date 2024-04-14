@@ -44,11 +44,13 @@ msgstr ""
 
 # Regex "(?P<name>([^"\\]|\\.)*)" creates a group named `name` that matches a string.
 message_patterns = {
-    re.compile(r'^(?!\s*\/\/|\s*\*).*RTR\(U?"(?P<message>([^"\\]|\\.)*)"(, "(?P<context>([^"\\]|\\.)*)")?\)'): ExtractType.TEXT,
+    re.compile(
+        r'^(?!\s*\/\/|\s*\*).*RTR\(U?"(?P<message>([^"\\]|\\.)*)"(, "(?P<context>([^"\\]|\\.)*)")?\)'
+    ): ExtractType.TEXT,
     re.compile(r'^(?!\s*\/\/|\s*\*).*RTRC\(U?"(?P<message>([^"\\]|\\.)*)"\)'): ExtractType.TEXT,
     re.compile(
         r'^(?!\s*\/\/|\s*\*).*RTRN\(U?"(?P<message>([^"\\]|\\.)*)", "(?P<plural_message>([^"\\]|\\.)*)",[^,)]+?(, "(?P<context>([^"\\]|\\.)*)")?\)'
-    ): ExtractType.TEXT
+    ): ExtractType.TEXT,
 }
 
 
@@ -171,11 +173,7 @@ shutil.move("swansong.pot", "locale/swansong.pot")
 # TODO: Make that in a portable way, if we care; if not, kudos to Unix users
 if os.name == "posix":
     os.chdir("..")
-    added = subprocess.check_output(
-        r"git diff -- locale/swanswong.pot | grep \+msgid | wc -l", shell=True
-    )
-    removed = subprocess.check_output(
-        r"git diff -- locale/swanswong.pot | grep \\\-msgid | wc -l", shell=True
-    )
+    added = subprocess.check_output(r"git diff -- locale/swanswong.pot | grep \+msgid | wc -l", shell=True)
+    removed = subprocess.check_output(r"git diff -- locale/swanswong.pot | grep \\\-msgid | wc -l", shell=True)
     print("\n# Template changes compared to the staged status:")
     print("#   Additions: %s msgids.\n#   Deletions: %s msgids." % (int(added), int(removed)))

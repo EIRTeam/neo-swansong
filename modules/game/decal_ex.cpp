@@ -30,11 +30,11 @@
 #include "decal_ex.h"
 
 void DecalEX::_bind_methods() {
-    ClassDB::bind_method(D_METHOD("get_alpha_clip_threshold_max"), &DecalEX::get_alpha_clip_threshold_max);
-    ClassDB::bind_method(D_METHOD("set_alpha_clip_threshold_max", "alpha_clip_threshold_max"), &DecalEX::set_alpha_clip_threshold_max);
+	ClassDB::bind_method(D_METHOD("get_alpha_clip_threshold_max"), &DecalEX::get_alpha_clip_threshold_max);
+	ClassDB::bind_method(D_METHOD("set_alpha_clip_threshold_max", "alpha_clip_threshold_max"), &DecalEX::set_alpha_clip_threshold_max);
 
-    ClassDB::bind_method(D_METHOD("get_alpha_clip_threshold_min"), &DecalEX::get_alpha_clip_threshold_min);
-    ClassDB::bind_method(D_METHOD("set_alpha_clip_threshold_min", "alpha_clip_threshold_min"), &DecalEX::set_alpha_clip_threshold_min);
+	ClassDB::bind_method(D_METHOD("get_alpha_clip_threshold_min"), &DecalEX::get_alpha_clip_threshold_min);
+	ClassDB::bind_method(D_METHOD("set_alpha_clip_threshold_min", "alpha_clip_threshold_min"), &DecalEX::set_alpha_clip_threshold_min);
 
 	ADD_GROUP("Alpha Clip", "");
 	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "alpha_clip_threshold_min"), "set_alpha_clip_threshold_min", "get_alpha_clip_threshold_min");
@@ -42,21 +42,21 @@ void DecalEX::_bind_methods() {
 }
 
 float DecalEX::get_alpha_clip_threshold_min() const {
-    return alpha_clip_threshold_min;
+	return alpha_clip_threshold_min;
 }
 
 void DecalEX::set_alpha_clip_threshold_min(float p_alpha_clip_threshold_low) {
-    alpha_clip_threshold_min = CLAMP(p_alpha_clip_threshold_low, 0.0, 1.0);
-    RID decal_rid = get_rid();
+	alpha_clip_threshold_min = CLAMP(p_alpha_clip_threshold_low, 0.0, 1.0);
+	RID decal_rid = get_rid();
 	RS::get_singleton()->decal_set_alpha_clip_threshold(decal_rid, alpha_clip_threshold_min, alpha_clip_threshold_max);
 }
 
 float DecalEX::get_alpha_clip_threshold_max() const {
-    return alpha_clip_threshold_max;
+	return alpha_clip_threshold_max;
 }
 
 void DecalEX::set_alpha_clip_threshold_max(float p_alpha_clip_threshold_high) {
-    alpha_clip_threshold_max = CLAMP(p_alpha_clip_threshold_high, 0.0, 1.0);
-    RID decal_rid = get_rid();
+	alpha_clip_threshold_max = CLAMP(p_alpha_clip_threshold_high, 0.0, 1.0);
+	RID decal_rid = get_rid();
 	RS::get_singleton()->decal_set_alpha_clip_threshold(decal_rid, alpha_clip_threshold_min, alpha_clip_threshold_max);
 }

@@ -1,19 +1,47 @@
+/**************************************************************************/
+/*  epas_animation_editor_document.h                                      */
+/**************************************************************************/
+/*                         This file is part of:                          */
+/*                               SWANSONG                                 */
+/*                          https://eirteam.moe                           */
+/**************************************************************************/
+/* Copyright (c) 2023-present Álex Román Núñez (EIRTeam).                 */
+/*                                                                        */
+/* Permission is hereby granted, free of charge, to any person obtaining  */
+/* a copy of this software and associated documentation files (the        */
+/* "Software"), to deal in the Software without restriction, including    */
+/* without limitation the rights to use, copy, modify, merge, publish,    */
+/* distribute, sublicense, and/or sell copies of the Software, and to     */
+/* permit persons to whom the Software is furnished to do so, subject to  */
+/* the following conditions:                                              */
+/*                                                                        */
+/* The above copyright notice and this permission notice shall be         */
+/* included in all copies or substantial portions of the Software.        */
+/*                                                                        */
+/* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,        */
+/* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     */
+/* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. */
+/* IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY   */
+/* CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,   */
+/* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE      */
+/* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                 */
+/**************************************************************************/
 
 #ifndef EPAS_ANIMATION_EDITOR_DOCUMENT_H
 #define EPAS_ANIMATION_EDITOR_DOCUMENT_H
 
-#include "core/object/undo_redo.h"
-#include "epas_editor_animation.h"
-#include "epas_animation_editor_ik_joint.h"
-#include "../epas_controller.h"
 #include "../epas_blend_node.h"
+#include "../epas_controller.h"
 #include "../epas_pose_node.h"
+#include "core/object/undo_redo.h"
+#include "epas_animation_editor_ik_joint.h"
 #include "epas_animation_editor_selectable.h"
+#include "epas_editor_animation.h"
 
 #include "animation_editor_constants.h"
 
 class EPASAnimationEditorDocument : public RefCounted {
-	UndoRedo* undo_redo = nullptr;
+	UndoRedo *undo_redo = nullptr;
 	String file_path;
 
 	Ref<EPASEditorAnimation> animation;
@@ -31,13 +59,14 @@ class EPASAnimationEditorDocument : public RefCounted {
 	Node3D *document_3d_root = nullptr;
 	HBDebugGeometry *debug_geo = nullptr;
 
-	Vector<GeometryInstance3D*> model_visuals; 
+	Vector<GeometryInstance3D *> model_visuals;
 	Skeleton3D *editing_skeleton = nullptr;
 	Vector<bool> group_visibility;
 	Vector<Ref<EPASAnimationEditorSelection>> selection_handles;
 	bool rt_ik_enabled = false;
 	void _show_error(const String &p_error);
 	uint64_t last_saved_version = 0;
+
 public:
 	static void _bind_methods();
 	// When manipulating keyframes we need to make sure the order of keyframes doesn't change

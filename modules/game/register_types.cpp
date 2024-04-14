@@ -65,8 +65,8 @@
 #include "animation_system/epas_editor_grid.h"
 #endif
 
-#include "animation_system/epas_add_node.h"
 #include "animation_system/animation_editor/epas_animation_editor.h"
+#include "animation_system/epas_add_node.h"
 #include "animation_system/epas_animation_event.h"
 #include "animation_system/epas_animation_node.h"
 #include "animation_system/epas_blend_node.h"

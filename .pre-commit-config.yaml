@@ -1,0 +1,46 @@
+repos:
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v17.0.6
+    hooks:
+      - id: clang-format
+        files: \.(c|h|cpp|hpp|cc|cxx|m|mm|inc|java|glsl)$
+        types_or: [text]
+        exclude: |
+          (?x)^(
+            engine.* |
+            .*thirdparty.* |
+            .modules/jolt.* |
+            .modules/input_glyphs.*
+          )
+
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 24.2.0
+    hooks:
+      - id: black
+        files: (\.py$|SConstruct|SCsub)
+        types_or: [text]
+        exclude: |
+          (?x)^(
+            engine.* |
+            .*thirdparty.* |
+            .modules/jolt.* |
+            .modules/input_glyphs.*
+          )
+        args:
+          - --line-length=120
+
+  - repo: local
+    hooks:
+      - id: copyright-headers-swansong
+        name: copyright-headers-swansong
+        language: python
+        verbose: true
+        entry: python3 modules/game/misc/scripts/copyright_headers.py
+        files: \.(c|h|cpp|hpp|cc|cxx|m|mm|inc|java)$
+        exclude: |
+          (?x)^(
+            engine.* |
+            .*thirdparty.* |
+            .modules/jolt.* |
+            .modules/input_glyphs.*
+          )

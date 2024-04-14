@@ -63,6 +63,7 @@ public:
 class EPASDirectionalAnimationEvent : public EPASAnimationEvent {
 	GDCLASS(EPASDirectionalAnimationEvent, EPASAnimationEvent);
 	Transform3D transform;
+
 protected:
 	static void _bind_methods();
 
@@ -73,8 +74,9 @@ public:
 
 class EPASBloodEvent : public EPASDirectionalAnimationEvent {
 	GDCLASS(EPASBloodEvent, EPASDirectionalAnimationEvent);
+
 protected:
-	static void _bind_methods() {};
+	static void _bind_methods(){};
 };
 
 #endif // EPAS_ANIMATION_EVENT_H

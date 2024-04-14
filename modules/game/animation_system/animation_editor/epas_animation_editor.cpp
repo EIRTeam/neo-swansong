@@ -105,7 +105,7 @@ void EPASAnimationEditor::_notification(int p_what) {
 				if (!_is_playing()) {
 					documents[i]->seek(current_frame / (float)FPS);
 				}
-				
+
 				documents[i]->update(get_process_delta_time());
 			}
 			queue_redraw();
@@ -122,7 +122,7 @@ void EPASAnimationEditor::_notification(int p_what) {
 
 			Ref<EPASAnimationEditorDocument> document = get_current_document();
 			if (document.is_valid()) {
-				for(int i = 0; i < document->get_selection_handle_count(); i++) {
+				for (int i = 0; i < document->get_selection_handle_count(); i++) {
 					document->get_selection_handle(i)->draw();
 				}
 			}
@@ -307,7 +307,7 @@ void EPASAnimationEditor::_draw_ui() {
 			if (ImGui::MenuItem("Open", "CTRL+O")) {
 				file_open_dialog->popup_centered_ratio(0.75);
 			}
-			if (ImGui::MenuItem("Save", "CTRL+S", false, current_animation.is_valid() &&!current_animation->get_path().is_empty())) {
+			if (ImGui::MenuItem("Save", "CTRL+S", false, current_animation.is_valid() && !current_animation->get_path().is_empty())) {
 				save_to_path(current_animation->get_path());
 			}
 			if (ImGui::MenuItem("Save as...", "CTRL+S", false)) {
@@ -429,7 +429,7 @@ void EPASAnimationEditor::_draw_ui() {
 			}
 			ImGui::EndMenu();
 		}
-		
+
 		// Draw visibility icon
 		if (current_document.is_valid()) {
 			const char *icons[] = {
@@ -441,16 +441,15 @@ void EPASAnimationEditor::_draw_ui() {
 			int icon_i = documents[selected_document]->get_visibility_mode();
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.0, 0.0, 0.0, 0.0));
 			if (ImGui::SmallButton(icons[icon_i])) {
-				int mode = (documents[selected_document]->get_visibility_mode()+1) % EPASAnimationEditorDocument::VISIBLITY_MODE_MAX;
+				int mode = (documents[selected_document]->get_visibility_mode() + 1) % EPASAnimationEditorDocument::VISIBLITY_MODE_MAX;
 				documents[selected_document]->set_visibility_mode(static_cast<EPASAnimationEditorDocument::VisibilityMode>(mode));
 			}
 			ImGui::PopStyleColor();
 		}
 
-
 		// Draw tabs
 		if (ImGui::BeginTabBar("##document_tabs")) {
-			for(int i = 0; i < documents.size(); i++) {
+			for (int i = 0; i < documents.size(); i++) {
 				bool selected = selected_document == i;
 				if (!selected) {
 					ImGui::PushStyleColor(ImGuiCol_Tab, ImVec4(0.0, 0.0, 0.0, 0.0));
@@ -494,7 +493,7 @@ void EPASAnimationEditor::_draw_ui() {
 				String eye_icon = String::utf8(FONT_REMIX_ICON_EYE_LINE " ");
 				String eye_off_icon = String::utf8(FONT_REMIX_ICON_EYE_CLOSE_LINE " ");
 				ImGui::PushItemFlag(ImGuiItemFlags_SelectableDontClosePopup, true);
-				
+
 				if (current_document.is_valid()) {
 					for (int i = 0; i < EPASAnimationEditorSelection::GROUP_MAX; i++) {
 						String name = current_document->get_group_visibility(i) ? eye_icon : eye_off_icon;
@@ -628,12 +627,12 @@ void EPASAnimationEditor::_draw_ui() {
 		ImGui::SameLine();
 		if (_is_playing()) {
 			if (ImGui::Button(FONT_REMIX_ICON_PAUSE_LINE)) {
-				for(int i = 0; i < documents.size(); i++) {
+				for (int i = 0; i < documents.size(); i++) {
 					documents[i]->pause();
 				}
 			}
 		} else if (ImGui::Button(FONT_REMIX_ICON_PLAY_LINE)) {
-			for(int i = 0; i < documents.size(); i++) {
+			for (int i = 0; i < documents.size(); i++) {
 				documents[i]->play();
 			}
 		}
@@ -642,8 +641,7 @@ void EPASAnimationEditor::_draw_ui() {
 		ImGui::Spacing();
 		ImGui::SameLine();
 
-		if (ImGui::BeginPopupContextItem("Add event popup"))
-		{
+		if (ImGui::BeginPopupContextItem("Add event popup")) {
 			if (ImGui::Selectable("Directional event")) {
 				Ref<EPASDirectionalAnimationEvent> directional_event;
 				directional_event.instantiate();
@@ -1041,11 +1039,10 @@ void EPASAnimationEditor::_apply_handle_transform(ImGuizmo::OPERATION p_operatio
 		Transform3D new_trf;
 		if (p_delta.size() == 16) {
 			HBTransformConversions::mat_to_trf(p_delta.ptr(), trf_delta);
-		 	new_trf = trf_delta * old_global;
+			new_trf = trf_delta * old_global;
 		} else {
 			HBTransformConversions::mat_to_trf(current_handle_trf_matrix.ptr(), new_trf);
 		}
-		
 
 		String action_template = "Transform handle";
 		if (!created_action) {
@@ -1102,7 +1099,6 @@ void EPASAnimationEditor::queue_warp_point_sphere_update() {
 }
 
 void EPASAnimationEditor::_load_placeholder_scene(const String &p_path) {
-
 }
 
 void EPASAnimationEditor::_copy_fk_to_ik() {
@@ -1230,7 +1226,7 @@ void EPASAnimationEditor::open_file(const String &p_path) {
 	document.instantiate(editor_3d_root);
 	document->open_file(p_path);
 	documents.push_back(document);
-	select_document(documents.size()-1);
+	select_document(documents.size() - 1);
 }
 
 void EPASAnimationEditor::_update_editing_handle_trf() {
@@ -1469,7 +1465,6 @@ EPASAnimationEditor::EPASAnimationEditor() {
 }
 
 EPASAnimationEditor::~EPASAnimationEditor() {
-
 }
 
 void EPASAnimationCurvesEditor::draw(Ref<EPASAnimation> p_animation, float p_playback_position) {

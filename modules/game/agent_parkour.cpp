@@ -554,4 +554,3 @@ void HBAgentParkourLedge::_editor_build(const EntityCompileInfo &p_info, const H
 	generate_colliders();
 	generate_offset_path();
 }
-

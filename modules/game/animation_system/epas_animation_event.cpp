@@ -66,7 +66,6 @@ void EPASDirectionalAnimationEvent::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_transform", "transform"), &EPASDirectionalAnimationEvent::set_transform);
 	ClassDB::bind_method(D_METHOD("get_transform"), &EPASDirectionalAnimationEvent::get_transform);
 	ADD_PROPERTY(PropertyInfo(Variant::TRANSFORM3D, "transform"), "set_transform", "get_transform");
-
 }
 
 Transform3D EPASDirectionalAnimationEvent::get_transform() const { return transform; }

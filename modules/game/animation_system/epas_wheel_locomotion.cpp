@@ -44,7 +44,7 @@ void EPASWheelLocomotion::process_node(const Ref<EPASPose> &p_base_pose, Ref<EPA
 	forward_w.y = 0.0f;
 	forward_w.normalize();
 	if (forward_w.is_normalized()) {
-		x_blend = CLAMP(linear_velocity.dot(forward_w)/max_velocity, 0.0f, 1.0f);
+		x_blend = CLAMP(linear_velocity.dot(forward_w) / max_velocity, 0.0f, 1.0f);
 	}
 #ifdef DEBUG_ENABLED
 	if (!debug_foot_texture.is_valid()) {

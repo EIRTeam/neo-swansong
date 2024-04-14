@@ -31,8 +31,8 @@
 
 #include "core/io/dir_access.h"
 #include "core/io/file_access.h"
-#include "core/variant/variant_utility.h"
 #include "core/variant/variant_parser.h"
+#include "core/variant/variant_utility.h"
 
 CTokenData *ConsoleSystem::create_cvar(const String &p_name, const Variant::Type &p_type, const Variant &p_default, const String &p_class_name) {
 	token_datas[token_count] = CTokenData(p_name, p_type, p_default, p_class_name);
@@ -204,7 +204,7 @@ String CTokenData::get_hint_string() const {
 }
 
 void CTokenData::init() {
-	switch(token_type) {
+	switch (token_type) {
 		case VARIABLE: {
 			// Generate property hint
 			if (class_name.is_empty()) {
@@ -214,9 +214,9 @@ void CTokenData::init() {
 			if (ClassDB::get_property_info(class_name, name, &info)) {
 				if (info.hint == PROPERTY_HINT_ENUM) {
 					Vector<String> enum_values = info.hint_string.split(",");
-					for(int i = 0; i < enum_values.size(); i++) {
+					for (int i = 0; i < enum_values.size(); i++) {
 						hint_string += vformat("\t%d = %s", i, enum_values[i]);
-						if (i < enum_values.size()-1) {
+						if (i < enum_values.size() - 1) {
 							hint_string += "\n";
 						}
 					}
@@ -224,7 +224,6 @@ void CTokenData::init() {
 			}
 		} break;
 		case COMMAND: {
-
 		} break;
 	}
 }

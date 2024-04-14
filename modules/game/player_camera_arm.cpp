@@ -308,7 +308,7 @@ void HBPlayerCameraArm::_on_agent_entered_combat(HBAgent *p_agent) {
 		set_target_mode(CameraTargetMode::TRACK_NODES);
 	}
 	if (target_mode == HBPlayerCameraArm::TRACK_NODES) {
-		inertialization_queued = true; 
+		inertialization_queued = true;
 	}
 	tracked_nodes_update_queued = true;
 }

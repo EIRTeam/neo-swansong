@@ -51,7 +51,7 @@ private:
 		Ref<ImmediateMesh> immediate_mesh;
 		HashMap<Ref<Shape3D>, MultiMeshInstance3D *> shape_map;
 		MultiMeshInstance3D *sphere_multi_mesh = nullptr;
-		Vector<MeshInstance3D*> arrow_meshes;
+		Vector<MeshInstance3D *> arrow_meshes;
 		StringName group_name;
 		bool visible = true;
 	};

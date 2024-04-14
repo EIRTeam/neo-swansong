@@ -28,8 +28,8 @@
 /**************************************************************************/
 
 #include "in_game_ui.h"
-#include "modules/game/player_agent.h"
 #include "game_world.h"
+#include "modules/game/player_agent.h"
 
 void HBInGameUI::_bind_methods() {
 	GDVIRTUAL_BIND(_player_health_changed, "old_health", "new_health", "max_health");

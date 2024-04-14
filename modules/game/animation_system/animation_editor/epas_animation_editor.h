@@ -30,32 +30,31 @@
 #ifndef EPAS_ANIMATION_EDITOR_H
 #define EPAS_ANIMATION_EDITOR_H
 #include "core/math/transform_3d.h"
+#include "epas_editor_animation.h"
 #include "modules/game/animation_system/epas_animation.h"
 #include "modules/game/animation_system/epas_animation_node.h"
 #include "modules/game/animation_system/epas_blend_node.h"
 #include "modules/game/animation_system/epas_pose_node.h"
-#include "epas_editor_animation.h"
 
 #ifdef DEBUG_ENABLED
 #include "../../fabrik/fabrik.h"
-#include "core/object/ref_counted.h"
-#include "core/object/undo_redo.h"
 #include "../epas_controller.h"
 #include "../epas_editor_camera.h"
 #include "../epas_editor_grid.h"
 #include "../epas_pose.h"
+#include "core/object/ref_counted.h"
+#include "core/object/undo_redo.h"
+#include "epas_animation_editor_document.h"
+#include "epas_animation_editor_ik_joint.h"
+#include "epas_animation_editor_selectable.h"
 #include "modules/imgui/godot_imgui.h"
 #include "scene/2d/multimesh_instance_2d.h"
 #include "scene/3d/multimesh_instance_3d.h"
 #include "scene/3d/node_3d.h"
 #include "scene/3d/skeleton_3d.h"
 #include "scene/gui/file_dialog.h"
-#include "epas_animation_editor_ik_joint.h"
-#include "epas_animation_editor_selectable.h"
-#include "epas_animation_editor_document.h"
 
 class EPASAnimationEditor;
-
 
 class EPASAnimationEventsEditor : public RefCounted {
 	GDCLASS(EPASAnimationEventsEditor, RefCounted);
@@ -81,14 +80,12 @@ public:
 	void draw(Ref<EPASAnimation> p_animation, float p_playback_position);
 };
 
-
 class EPASAnimationEditor : public Control {
 	GDCLASS(EPASAnimationEditor, Control);
 
 public:
 private:
 	int selected_document = -1;
-
 
 	Vector<Ref<EPASAnimationEditorDocument>> documents;
 	ImGui::FrameIndexType current_frame = 0;

@@ -427,6 +427,7 @@ class HBAgentCombatAttackState : public HBAgentRootMotionState {
 	// When attacking cancelling requires you to repress the attack button while the attack is happening
 	bool was_attack_repressed = false;
 	bool parry_window_opened = false;
+
 private:
 	bool handle_attack();
 	void handle_hitstop(float p_delta);

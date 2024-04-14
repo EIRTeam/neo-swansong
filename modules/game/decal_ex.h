@@ -33,18 +33,20 @@
 #include "scene/3d/decal.h"
 
 class DecalEX : public Decal {
-    GDCLASS(DecalEX, Decal);
-private:
-    float alpha_clip_threshold_min = 0.0;
-    float alpha_clip_threshold_max = 1.0;
-protected:
-    static void _bind_methods();
-public:
-    float get_alpha_clip_threshold_min() const;
-    void set_alpha_clip_threshold_min(float p_alpha_clip_threshold_low);
-    float get_alpha_clip_threshold_max() const;
-    void set_alpha_clip_threshold_max(float p_alpha_clip_threshold_high);
+	GDCLASS(DecalEX, Decal);
 
+private:
+	float alpha_clip_threshold_min = 0.0;
+	float alpha_clip_threshold_max = 1.0;
+
+protected:
+	static void _bind_methods();
+
+public:
+	float get_alpha_clip_threshold_min() const;
+	void set_alpha_clip_threshold_min(float p_alpha_clip_threshold_low);
+	float get_alpha_clip_threshold_max() const;
+	void set_alpha_clip_threshold_max(float p_alpha_clip_threshold_high);
 };
 
 #endif // DECAL_EX_H

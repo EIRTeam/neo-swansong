@@ -255,7 +255,7 @@ void HBAgentState::_on_attack_received(HBAgent *p_attacker, Ref<HBAttackData> p_
 		return;
 	}
 
-	if (p_attack_data->get_execution_type() == HBAttackData::EXECUTION_NONE) {	
+	if (p_attack_data->get_execution_type() == HBAttackData::EXECUTION_NONE) {
 		agent->receive_damage(p_attack_data->get_damage());
 		// We kicked the bucket, go to dead state, but only if we aren't playing an execution animation
 		if (agent->is_dead()) {
@@ -2319,7 +2319,6 @@ void HBAgentRootMotionState::enter(const Dictionary &p_args) {
 	}
 	transition_node->transition_to(p_args.get(PARAM_TRANSITION_NODE_INDEX, 0));
 
-
 	animation_node->set_root_motion_starting_transform(get_skeleton()->get_global_transform());
 	animation_node->set_root_motion_forward(Vector3(0.0f, 0.0f, 1.0f));
 	animation_node->play();
@@ -3622,7 +3621,7 @@ void HBAgentCombatAttackState::enter(const Dictionary &p_args) {
 	setup_attack_reception();
 
 	target->connect("parried", callable_mp(this, &HBAgentCombatAttackState::_on_attack_parried));
-	
+
 	parry_window_opened = false;
 }
 
@@ -3714,7 +3713,6 @@ void HBAgentCombatHitState::setup_animation() {
 		Dictionary dead_state_args;
 		root_motion_args[HBAgentRootMotionState::PARAM_NEXT_STATE_ARGS] = dead_state_args;
 	}
-
 
 	root_motion_args[HBAgentRootMotionState::PARAM_COLLIDE] = true;
 

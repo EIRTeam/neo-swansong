@@ -55,7 +55,9 @@ class PropertyNameProcessor:
     def __init__(self):
         remap_re = re.compile(r'^\t*capitalize_string_remaps\["(?P<from>.+)"\] = (String::utf8\(|U)?"(?P<to>.+)"')
         stop_words_re = re.compile(r'^\t*"(?P<word>.+)",')
-        contexts_re = re.compile(r'^\t*translation_contexts\["(?P<message>.+)"\]\["(?P<condition>.+)"\] = (String::utf8\(|U)?"(?P<context>.+)"')
+        contexts_re = re.compile(
+            r'^\t*translation_contexts\["(?P<message>.+)"\]\["(?P<condition>.+)"\] = (String::utf8\(|U)?"(?P<context>.+)"'
+        )
         with open("editor/editor_property_name_processor.cpp") as f:
             for line in f:
                 m = remap_re.search(line)

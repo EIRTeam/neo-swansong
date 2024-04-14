@@ -52,6 +52,7 @@ public:
 		EXECUTION_NONE,
 		EXECUTION_1
 	};
+
 private:
 	StringName name;
 	Ref<EPASAnimation> animation;
@@ -103,11 +104,13 @@ public:
 
 class HBAttackHitAnimationData : public RefCounted {
 	GDCLASS(HBAttackHitAnimationData, RefCounted);
+
 public:
 	enum AttackReceiveType {
 		DIRECTIONAL,
 		EXECUTION
 	};
+
 private:
 	AttackReceiveType receive_type = AttackReceiveType::DIRECTIONAL;
 	HBAttackData::AttackDirection attack_direction = HBAttackData::RIGHT;
@@ -116,8 +119,10 @@ private:
 	Ref<EPASAnimation> animation;
 	int transition_index = -1;
 	float start_time = 0.0f;
+
 protected:
 	static void _bind_methods();
+
 public:
 	AttackReceiveType get_receive_type() const { return receive_type; }
 	void set_receive_type(AttackReceiveType p_receive_type) { receive_type = p_receive_type; }

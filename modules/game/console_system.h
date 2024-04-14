@@ -76,7 +76,7 @@ public:
 	TokenType get_token_type() const;
 	String get_hint_string() const;
 	void init();
-	
+
 	~CTokenData();
 };
 

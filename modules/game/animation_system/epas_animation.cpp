@@ -384,7 +384,7 @@ void EPASAnimation::interpolate(float p_time, const Ref<EPASPose> &p_base_pose, 
 				Quaternion facing_rotation;
 
 				if (!debug_geo) {
-					const_cast<EPASAnimation*>(this)->debug_geo = memnew(HBDebugGeometry);
+					const_cast<EPASAnimation *>(this)->debug_geo = memnew(HBDebugGeometry);
 					SceneTree::get_singleton()->get_root()->add_child(debug_geo);
 					debug_geo->set_as_top_level(true);
 					debug_geo->set_global_transform(Transform3D());
@@ -392,7 +392,7 @@ void EPASAnimation::interpolate(float p_time, const Ref<EPASPose> &p_base_pose, 
 
 				debug_geo->clear();
 				debug_geo->debug_sphere(p_playback_info->starting_global_trf.origin, 0.05f, Color("BLUE"));
-				
+
 				Transform3D anim_ident = Transform3D();
 				Transform3D root_zero = get_keyframe(0)->get_pose()->get_bone_transform(p_playback_info->root_bone, p_base_pose);
 				// This lets us remove the initial root offset

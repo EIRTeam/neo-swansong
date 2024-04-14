@@ -47,7 +47,7 @@ if ARGUMENTS.get("game_shared", "no") == "yes":
     shared_lib_tp = env_thirdparty.StaticLibrary(target="#bin/game_tp", source=[thirdparty_sources])
 
     env.Append(LIBPATH=["#bin"])
-    
+
     env_game.Append(LIBS=[f"game_tp{env['PROGSUFFIX']}"])
     env_game.Append(LIBPATH=["#bin"])
     env.Append(LIBS=[f"game_tp{env['PROGSUFFIX']}"])

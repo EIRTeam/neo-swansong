@@ -178,7 +178,6 @@ void HBAgent::add_attack(const Ref<HBAttackData> &p_attack_data) {
 void HBAgent::add_attack_hit_animation(const Ref<HBAttackHitAnimationData> &p_hit_data) {
 	ERR_FAIL_COND(attack_hit_datas.has(p_hit_data->get_name()));
 	attack_hit_datas.insert(p_hit_data->get_name(), p_hit_data);
-
 }
 
 Ref<HBAttackHitAnimationData> HBAgent::find_hit_animation(HBAttackData::ExecutionType p_execution_type, HBAttackData::AttackDirection p_attack_direction) const {
@@ -197,7 +196,7 @@ Ref<HBAttackHitAnimationData> HBAgent::find_hit_animation(HBAttackData::Executio
 	if (candidates.size() == 0) {
 		return Ref<HBAttackHitAnimationData>();
 	}
-	return candidates[Math::random(0, candidates.size()-1)];
+	return candidates[Math::random(0, candidates.size() - 1)];
 }
 
 bool HBAgent::is_in_combat() const {
@@ -794,7 +793,7 @@ void HBAttackHitAnimationData::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_transition_index"), &HBAttackHitAnimationData::get_transition_index);
 	ClassDB::bind_method(D_METHOD("set_transition_index", "transition_index"), &HBAttackHitAnimationData::set_transition_index);
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "transition_index"), "set_transition_index", "get_transition_index");
-	
+
 	ClassDB::bind_method(D_METHOD("get_start_time"), &HBAttackHitAnimationData::get_start_time);
 	ClassDB::bind_method(D_METHOD("set_start_time", "start_time"), &HBAttackHitAnimationData::set_start_time);
 	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "start_time"), "set_start_time", "get_start_time");

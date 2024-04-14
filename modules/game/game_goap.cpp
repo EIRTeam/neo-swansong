@@ -50,7 +50,7 @@ void GOAPActionPlanner::get_goap_state_from_game_state(worldstate_t *p_state) {
 	goap_worldstate_set(&action_planner, p_state, NPCBrainConstants::IN_COMBAT_RANGE_TO_PLAYER, is_in_combat_range);
 	bool is_player_dead = world_state->get_player()->is_dead();
 	goap_worldstate_set(&action_planner, p_state, NPCBrainConstants::PLAYER_DEAD_ATOM, is_player_dead);
-	
+
 	HBNPCAgent *npc = Object::cast_to<HBNPCAgent>(agent);
 	bool has_patrol_route = false;
 	if (npc) {

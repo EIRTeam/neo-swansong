@@ -6,7 +6,7 @@
 [subrepo]
 	remote = https://github.com/EIRTeam/godot-tracy.git
 	branch = master
-	commit = dc8415fb4a9113e5a2392b2d204c7c9ba1ee5985
-	parent = 67c915a0ee96c430c87f58fc47f96a9a45ad75ae
+	commit = 48b42520b5ee9aef1b7b99369ad4401f7f869f32
+	parent = c2f26ecdb863a2aae31f363be0cd5e25f5c7098b
 	method = merge
 	cmdver = 0.4.6

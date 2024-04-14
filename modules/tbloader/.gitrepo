@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/EIRTeam/godot-tbloader.git
+	branch = master
+	commit = 4b819cb7d269516f42e1d69ead9ecb5168cf73c4
+	parent = 91bb057c1c260d64ece59c85d3d6ac9f4c19cb8f
+	method = merge
+	cmdver = 0.4.6

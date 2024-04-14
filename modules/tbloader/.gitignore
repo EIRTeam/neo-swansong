@@ -1,0 +1,12 @@
+bin/
+*.dblite
+*.obj
+*.os
+.DS_Store
+.vscode
+
+# Python generated
+__pycache__/
+*.pyc
+
+*.o

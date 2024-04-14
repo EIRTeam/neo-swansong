@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="InputGlyphsSingleton" inherits="Object" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_event_display_string" qualifiers="const">
+			<return type="String" />
+			<param index="0" name="event" type="InputEvent" />
+			<description>
+				Gets the display string for an event, currently only supports [InputEventKey]
+			</description>
+		</method>
+		<method name="get_glyph_texture">
+			<return type="Texture2D" />
+			<param index="0" name="input_type" type="int" enum="InputGlyphsConstants.InputType" />
+			<param index="1" name="input_origin" type="int" enum="InputGlyphsConstants.InputOrigin" />
+			<param index="2" name="style" type="int" enum="InputGlyphStyle" is_bitfield="true" />
+			<param index="3" name="size" type="int" enum="InputGlyphSize" default="3" />
+			<description>
+				Retrieves the glyph texture, make sure it is already loaded by using [method has_glyph_texture].
+			</description>
+		</method>
+		<method name="get_origin_from_joy_event" qualifiers="const">
+			<return type="int" enum="InputGlyphsConstants.InputOrigin" />
+			<param index="0" name="input_event" type="InputEvent" />
+			<description>
+				Returns the input origin from the given joy event, it will return [constant InputGlyphsConstants.INPUT_ORIGIN_INVALID] if it couldn't find any.
+			</description>
+		</method>
+		<method name="has_glyph_texture">
+			<return type="bool" />
+			<param index="0" name="input_type" type="int" enum="InputGlyphsConstants.InputType" />
+			<param index="1" name="input_origin" type="int" enum="InputGlyphsConstants.InputOrigin" />
+			<param index="2" name="style" type="int" enum="InputGlyphStyle" is_bitfield="true" />
+			<param index="3" name="size" type="int" enum="InputGlyphSize" default="3" />
+			<description>
+				Returns [code]true[/code] if the glyph texture is ready and can be retrieved using [method get_glyph_texture].
+			</description>
+		</method>
+		<method name="init">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="input_type_to_localized_string" qualifiers="const">
+			<return type="String" />
+			<param index="0" name="input_type" type="int" enum="InputGlyphsConstants.InputType" />
+			<description>
+				Returns a localized string for the given input type.
+			</description>
+		</method>
+		<method name="request_glyph_texture_load">
+			<return type="void" />
+			<param index="0" name="input_type" type="int" enum="InputGlyphsConstants.InputType" />
+			<param index="1" name="input_origin" type="int" enum="InputGlyphsConstants.InputOrigin" />
+			<param index="2" name="style" type="int" enum="InputGlyphStyle" is_bitfield="true" />
+			<param index="3" name="size" type="int" enum="InputGlyphSize" default="3" />
+			<description>
+				Request a glyph to start loading, does nothing if it's already loading.
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="forced_input_type" type="int" setter="set_forced_input_type" getter="get_forced_input_type" enum="InputGlyphsConstants.InputType">
+			Sets the input type that will override the current input type.
+		</member>
+	</members>
+	<signals>
+		<signal name="input_glyphs_changed">
+			<description>
+				Emitted when the input glyphs have to be reloaded for whatever reason.
+			</description>
+		</signal>
+	</signals>
+	<constants>
+		<constant name="GLYPH_SIZE_SMALL" value="0" enum="InputGlyphSize">
+			Small glyph size, usually 32x32.
+		</constant>
+		<constant name="GLYPH_SIZE_MEDIUM" value="1" enum="InputGlyphSize">
+			Medium glyph size, usually 128x128.
+		</constant>
+		<constant name="GLYPH_SIZE_LARGE" value="2" enum="InputGlyphSize">
+			Large glyph size, usually 256x256.
+		</constant>
+		<constant name="GLYPH_SIZE_MAX" value="3" enum="InputGlyphSize">
+		</constant>
+		<constant name="GLYPH_STYLE_KNOCKOUT" value="0" enum="InputGlyphStyle" is_bitfield="true">
+			Face buttons will have colored labels/outlines on a knocked out background.
+			Rest of inputs will have white detail/borders on a knocked out background.
+		</constant>
+		<constant name="GLYPH_STYLE_LIGHT" value="1" enum="InputGlyphStyle" is_bitfield="true">
+			Black detail/borders on a white background.
+		</constant>
+		<constant name="GLYPH_STYLE_DARK" value="2" enum="InputGlyphStyle" is_bitfield="true">
+			White detail/borders on a black background.
+		</constant>
+		<constant name="GLYPH_STYLE_NEUTRAL_COLOR_ABXY" value="16" enum="InputGlyphStyle" is_bitfield="true">
+			ABXY Buttons will match the base style color instead of their normal associated color.
+		</constant>
+		<constant name="GLYPH_STYLE_SOLID_ABXY" value="32" enum="InputGlyphStyle" is_bitfield="true">
+			ABXY Buttons will have a solid fill.
+		</constant>
+	</constants>
+</class>

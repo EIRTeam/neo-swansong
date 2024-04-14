@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/EIRTeam/EIRTeam.InputGlyphs.git
+	branch = master
+	commit = 1c5641f2b72a6edd2baedc3e00a524c997e836e0
+	parent = 48f5801b342561b7f89c19013be2fe1a4d2dd6ee
+	method = merge
+	cmdver = 0.4.6

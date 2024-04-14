@@ -9,7 +9,7 @@ env_tracy = env_modules.Clone()
 
 module_obj = []
 thirdparty_obj = []
-thirdparty_dir = "#modules/tracy/thirdparty/tracy/public/"
+thirdparty_dir = "thirdparty/tracy/public/"
 
 thirdparty_sources = ["TracyClient.cpp"]
 
@@ -34,9 +34,9 @@ env_tracy.add_source_files(module_obj, "*.cpp")
 env.modules_sources += module_obj
 
 # Needed to force rebuilding the module files when the thirdparty library is updated.
-env_tracy.Depends("#modules/tracy/tracy.gen.h", env_tracy.Value(tracy_defines))
+env_tracy.Depends("tracy.gen.h", env_tracy.Value(tracy_defines))
 env_tracy.CommandNoCache(
-    ["#modules/tracy/tracy.gen.h"],
+    ["tracy.gen.h"],
     "tracy_header_builder.py",
     env_tracy.Run(tracy_header_builder.make_tracy_header),
 )

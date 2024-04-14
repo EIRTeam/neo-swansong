@@ -1,5 +1,6 @@
 def make_tracy_header(target, source, env):
     defines = env["CPPDEFINES"]
+    print("MAKE HEADER")
 
     g = open(str(target[0]), "w", encoding="utf-8")
     g.write("/* THIS FILE IS GENERATED DO NOT EDIT */\n")
@@ -10,7 +11,7 @@ def make_tracy_header(target, source, env):
             if d.startswith("TRACY_"):
                 g.write("#define " + d + "\n")
     g.write("\n")
-    g.write('#include "thirdparty/tracy/public/tracy/Tracy.hpp"\n\n')
+    g.write('#include "tracy/thirdparty/tracy/public/tracy/Tracy.hpp"\n\n')
 
     g.write("#endif // GODOT_TRACY_H\n")
     g.close()

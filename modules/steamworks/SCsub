@@ -1,0 +1,79 @@
+#!/usr/bin/env python
+
+import os
+import steamworks_builders
+
+Import("env")
+Import("env_modules")
+
+module_path = Dir(".").srcnode().abspath
+
+env_steamworks = env_modules.Clone()
+
+module_obj = []
+
+sources = [
+    Glob("*.cpp"),
+]
+
+# For SVG rendering
+if "svg" in env.module_list:
+    env_steamworks.Prepend(
+        CPPPATH=[
+            "#thirdparty/thorvg/inc",
+            "#thirdparty/thorvg/src/common",
+            "#thirdparty/thorvg/src/renderer",
+        ]
+    )
+    # Enable ThorVG static object linking.
+    env_steamworks.Append(CPPDEFINES=["TVG_STATIC"])
+
+# Treat steamworks headers as system headers to avoid raising warnings. Not supported on MSVC.
+if not env.msvc:
+    env_steamworks.Append(CPPFLAGS=["-isystem", Dir(module_path + "/thirdparty/steamworks/public").path])
+else:
+    env_steamworks.Prepend(CPPPATH=[module_path + "/thirdparty/steamworks/public"])
+
+lib_path = module_path + "/thirdparty/steamworks/redistributable_bin/"
+lib = ""
+
+if env["platform"] == "linuxbsd":
+    lib_path += "linux64"
+    lib = "steam_api"
+    if not "RPATH" in env:
+        env.Append(RPATH=env.Literal("\\$$ORIGIN"))
+elif env["platform"] == "windows":
+    lib_path += "win64"
+    if env["CC"] == "cl":
+        lib = "steam_api64.lib"
+    else:
+        lib = "steam_api64"
+
+steam_api_json_path = "thirdparty/steamworks/public/steam/steam_api.json"
+env_steamworks.Depends("steamworks_constants.gen.h", steam_api_json_path)
+env_steamworks.Depends("steamworks_constants.gen.h", "steamworks_builders.py")
+env.CommandNoCache(
+    "steamworks_constants.gen.h",
+    steam_api_json_path,
+    env.Run(
+        steamworks_builders.generate_constants_file,
+    ),
+)
+
+env_steamworks.Append(CPPDEFINES=["TVG_STATIC"])
+
+if ARGUMENTS.get("steamworks_shared", "no") == "yes":
+    # Shared lib compilation
+    env_steamworks.Append(CCFLAGS=["-fPIC"])
+    env_steamworks["LIBS"] = [lib]
+    shared_lib = env_steamworks.SharedLibrary(target="#bin/steamworks", source=sources)
+    shared_lib_shim = shared_lib[0].name.rsplit(".", 1)[0]
+    env_steamworks.Prepend(LIBPATH=[lib_path])
+    env.Append(LIBPATH=["#bin"])
+    env.Append(LIBS=["libsteamworks-linuxbsd-editor-dev-x86_64"])
+    env.Depends(shared_lib, "steamworks_constants.gen.h")
+else:
+    env.Prepend(LIBPATH=[lib_path])
+    env.Append(LIBS=[lib])
+    env_steamworks.add_source_files(module_obj, sources)
+    env.modules_sources += module_obj

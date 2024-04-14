@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="HBSteamFriend" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+		Class representing a user on Steam.
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="from_steam_id" qualifiers="static">
+			<return type="HBSteamFriend" />
+			<param index="0" name="steam_id" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="request_user_information" qualifiers="const">
+			<return type="bool" />
+			<param index="0" name="include_avatars" type="bool" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="avatar" type="Texture2D" setter="" getter="get_avatar">
+			Returns this user's avatar image, this is cached after the first time.
+		</member>
+		<member name="persona_name" type="String" setter="" getter="get_persona_name">
+			Returns the visible name of this user.
+		</member>
+		<member name="steam_id" type="int" setter="" getter="get_steam_id">
+			Returns the Steam ID of this user.
+		</member>
+	</members>
+	<signals>
+		<signal name="information_updated">
+			<description>
+			</description>
+		</signal>
+	</signals>
+</class>

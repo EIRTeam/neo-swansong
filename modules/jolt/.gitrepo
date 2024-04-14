@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/EIRTeam/godot-jolt.git
+	branch = master
+	commit = f3b5c65c9e066ceab8db1d0f01fa1a1e738ad863
+	parent = ab24aec20dbb9ae8bf31ff0ec0301bb424d6b16b
+	method = merge
+	cmdver = 0.4.6

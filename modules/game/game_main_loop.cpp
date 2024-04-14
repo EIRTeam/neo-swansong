@@ -29,8 +29,8 @@
 
 #include "game_main_loop.h"
 
-#include "modules/game/console.h"
-#include "modules/imgui/register_types.h"
+#include "game/console.h"
+#include "imgui/register_types.h"
 
 #ifdef DEBUG_ENABLED
 #include "animation_system/animation_editor/epas_animation_editor.h"
@@ -41,7 +41,7 @@
 #include <fenv.h>
 #endif
 
-#include "modules/tracy/tracy.gen.h"
+#include "tracy/tracy.gen.h"
 
 #include "modules/modules_enabled.gen.h"
 

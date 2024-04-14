@@ -18,5 +18,5 @@ icon_sources = Glob("*.svg")
 
 env.Alias(
     "game_tools_theme_icons",
-    [env.MakeGameThemeIconsBuilder("#modules/game/resources/tool_icons/game_tools_theme_icons.gen.h", icon_sources)],
+    [env.MakeGameThemeIconsBuilder("game_tools_theme_icons.gen.h", icon_sources)],
 )

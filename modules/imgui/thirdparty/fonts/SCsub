@@ -19,5 +19,5 @@ font_sources = Glob("*.ttf")
 
 env.Alias(
     "imgui_fonts",
-    [env.MakeImguiFontsBuilder("#modules/imgui/thirdparty/fonts/imgui_fonts.gen.h", font_sources)],
+    [env.MakeImguiFontsBuilder("imgui_fonts.gen.h", font_sources)],
 )

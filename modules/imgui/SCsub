@@ -7,7 +7,7 @@ env_imgui = env_modules.Clone()
 
 module_obj = []
 thirdparty_obj = []
-thirdparty_dir = "#modules/imgui/thirdparty/imgui/"
+thirdparty_dir = "thirdparty/imgui/"
 
 thirdparty_sources = [
     "imgui_demo.cpp",

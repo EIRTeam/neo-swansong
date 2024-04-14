@@ -6,7 +6,7 @@
 [subrepo]
 	remote = https://github.com/EIRTeam/EIRTeam.InputGlyphs.git
 	branch = master
-	commit = 1c5641f2b72a6edd2baedc3e00a524c997e836e0
-	parent = 48f5801b342561b7f89c19013be2fe1a4d2dd6ee
+	commit = 862ed2fd5e73fc9400eafa4239c8196da521674b
+	parent = 2233f05638a499157f7bfa7882a13e2f632ab6bf
 	method = merge
 	cmdver = 0.4.6

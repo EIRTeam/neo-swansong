@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/godot-jolt/mimalloc.git
+	branch = master
+	commit = 2cbf68b5e74ac00c585a48c5b82dff6b87fbf9e3
+	parent = bcc834a11aa8087c1bfc8fa9c89f6d9027d1e22d
+	method = merge
+	cmdver = 0.4.6

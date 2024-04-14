@@ -373,3 +373,11 @@ $RECYCLE.BIN/
 *.msp
 *.lnk
 *.generated.props
+
+engine/modules/game
+engine/modules/imgui
+engine/modules/input_glyphs
+engine/modules/steamworks
+engine/modules/tbloader
+engine/modules/tracy
+engine/modules/jolt

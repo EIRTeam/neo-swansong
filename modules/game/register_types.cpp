@@ -45,7 +45,6 @@
 #include "modules/game/animation_system/epas_ik_node.h"
 #include "modules/game/animation_system/epas_lookat_node.h"
 #include "modules/game/animation_system/epas_orientation_warp_node.h"
-#include "modules/game/decal_ex.h"
 
 #include "modules/game/flipbook.h"
 #include "modules/game/hb_geometry.h"
@@ -174,8 +173,6 @@ void initialize_game_module(ModuleInitializationLevel p_level) {
 	GDREGISTER_CLASS(HBFlipbook);
 	GDREGISTER_CLASS(HBGeometry);
 	GDREGISTER_CLASS(HBUserConfig);
-
-	GDREGISTER_CLASS(DecalEX);
 
 	GLOBAL_DEF_BASIC(PropertyInfo(Variant::STRING, "game/ingame_ui_scene", PROPERTY_HINT_FILE, "*.tscn,*.scn,*.res"), "");
 

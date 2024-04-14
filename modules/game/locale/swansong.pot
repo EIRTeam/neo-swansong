@@ -1,0 +1,25 @@
+# LANGUAGE translation of Swansong
+# Copyright (c) 2024-present EIRTeam
+# This file is distributed under the same license as the Swansong source code.
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Swansong interface\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: user_config/user_config.cpp
+msgid "Fullscreen"
+msgstr ""
+
+#: user_config/user_config.cpp
+msgid "Borderless windowed"
+msgstr ""
+
+#: user_config/user_config.cpp
+msgid "Windowed"
+msgstr ""

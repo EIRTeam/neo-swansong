@@ -1,0 +1,3 @@
+# Swansong
+
+Project Swansong monorepo

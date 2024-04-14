@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="EPASAnimation" inherits="Resource" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../doc/class.xsd">
+	<brief_description>
+		EPAS animation container, plays the animation constantly in loop
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="add_keyframe">
+			<return type="void" />
+			<param index="0" name="keyframe" type="EPASKeyframe" />
+			<description>
+				Adds a keyframe to this animation.
+			</description>
+		</method>
+		<method name="get_length" qualifiers="const">
+			<return type="float" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<constants>
+		<constant name="STEP" value="0" enum="InterpolationMethod">
+			Doesn't actually interpolate keyframes, just shows the current one as-is.
+		</constant>
+		<constant name="LINEAR" value="1" enum="InterpolationMethod">
+			Interplates between keyframes linearly.
+		</constant>
+		<constant name="BICUBIC_SPLINE" value="2" enum="InterpolationMethod">
+			Bicubic spine interpolation with wrap-around, meaning that the starting frame affects the ending frame and vice-versa, good for looping animations.
+		</constant>
+		<constant name="BICUBIC_SPLINE_CLAMPED" value="3" enum="InterpolationMethod">
+			Same as [constant BICUBIC_SPLINE] but it doesn't wrap-around, good for animations that don't loop.
+		</constant>
+	</constants>
+</class>
